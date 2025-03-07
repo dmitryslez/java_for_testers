@@ -5,12 +5,14 @@ public class TriangleTest {
 
     @Test
     void CalculatePerimeter(){
-        var result = Triangle.trianglePerimeter(5.0, 5.0, 5.0);
+        var testTriangle = new Triangle(5.0,5.0,5.0);
+        double result = testTriangle.trianglePerimeter();
         Assertions.assertEquals(15.0, result);
     }
     @Test
     void CalculatArea(){
-        var result = Triangle.triangleArea(5.0, 5.0, 5.0);
+        var testTriangle = new Triangle(5.0,5.0,5.0);
+        double result = testTriangle.triangleArea();
         Assertions.assertEquals(10.825317547305483, result);
     }
 }
