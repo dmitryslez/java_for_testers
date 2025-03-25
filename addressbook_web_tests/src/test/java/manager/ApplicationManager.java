@@ -8,7 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ApplicationManager {
-    protected static WebDriver driver;
+
+    protected WebDriver driver;
+
+    private LoginHelper session;
 
    public void init() {
         if (driver == null) {
@@ -17,10 +20,15 @@ public class ApplicationManager {
             driver.get("http://localhost:8080/addressbook/");
             driver.manage().window().setSize(new Dimension(1936, 1056));
             driver.findElement(By.name("user")).click();
-            driver.findElement(By.name("user")).sendKeys("admin");
-            driver.findElement(By.name("pass")).sendKeys("secret");
-            driver.findElement(By.xpath("//input[@value=\'Login\']")).click();
+            session.login("admin", "secret");
         }
+    }
+
+    public LoginHelper session() {
+       if (session == null) {
+           session = new LoginHelper(this);
+       }
+       return session;
     }
 
     public boolean isElementPresent(By locator) {
