@@ -13,7 +13,6 @@ public class ContactHelper extends HelperBase {
     public void createContact(ContactData contact) {
         openContactPage();
         fillContactForm(contact);
-        click(By.cssSelector("form:nth-child(2)"));
         submitContactCreation();
         openHomePage();
     }
@@ -23,7 +22,7 @@ public class ContactHelper extends HelperBase {
     }
     public void openContactPage() {
         if (!manager.isElementPresent(By.name("new"))) {
-            click(By.linkText("contact new"));
+            click(By.linkText("add new"));
         }
     }
     private void fillContactForm(ContactData group) {

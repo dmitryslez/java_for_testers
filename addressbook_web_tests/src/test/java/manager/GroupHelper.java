@@ -28,12 +28,14 @@ public class GroupHelper extends HelperBase {
         submitGroupCreation();
         returnToGroupsPage();
     }
+
     public void removeGroup() {
         openGroupsPage();
         selectGroup();
         removeSelectedGroup();
         returnToGroupsPage();
     }
+
     public void modifyGroup(GroupData modifiedGroup) {
         openGroupsPage();
         selectGroup();
@@ -42,6 +44,7 @@ public class GroupHelper extends HelperBase {
         submitGroupModification();
         returnToGroupsPage();
     }
+
     private void submitGroupCreation() {
         click(By.name("submit"));
     }

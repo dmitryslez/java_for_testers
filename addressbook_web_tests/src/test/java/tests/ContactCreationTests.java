@@ -17,7 +17,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void canCreateContactWithOnly() {
-        app.contact().createContact(new ContactData().withFirstName("unknown"));
+        app.contact().createContact(new ContactData().withLastName("last name"));
     }
 }
 
