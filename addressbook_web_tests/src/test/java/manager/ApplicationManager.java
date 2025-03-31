@@ -1,5 +1,6 @@
 package manager;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
@@ -14,6 +15,8 @@ public class ApplicationManager {
     private LoginHelper session;
 
     private GroupHelper groups;
+
+    private ContactHelper contact;
 
 
 
@@ -47,6 +50,13 @@ public class ApplicationManager {
            groups = new GroupHelper(this);
        }
        return groups;
+    }
+
+    public ContactHelper contact() {
+       if (contact == null) {
+           contact = new ContactHelper(this);
+       }
+       return contact;
     }
 
     public boolean isElementPresent(By locator) {
