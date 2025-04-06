@@ -15,14 +15,14 @@ public class GroupRemovalTests extends TestBase {
         if (app.groups().getCount() == 0) {
             app.groups().createGroup(new GroupData("", "name", "group header", "group footer"));
         }
-        var oldGropus = app.groups().getList();
+        var oldGroups = app.groups().getList();
         var rnd = new Random();
-        var index = rnd.nextInt(oldGropus.size());
-        app.groups().removeGroup(oldGropus.get(index));
-        var newGropus = app.groups().getList();
-        var expectedList = new ArrayList<>(oldGropus);
+        var index = rnd.nextInt(oldGroups.size());
+        app.groups().removeGroup(oldGroups.get(index));
+        var newGroups = app.groups().getList();
+        var expectedList = new ArrayList<>(oldGroups);
         expectedList.remove(index);
-        Assertions.assertEquals(newGropus,expectedList);
+        Assertions.assertEquals(newGroups,expectedList);
     }
 
     @Test
