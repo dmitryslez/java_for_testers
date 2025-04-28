@@ -47,8 +47,7 @@ public class ContactHelper extends HelperBase {
 
 
     private void selectContact(ContactData contact) {
-        click(By.cssSelector(String.format("input[value='%s']", contact.id())));
-
+        click(By.xpath(String.format("//a[contains(@href,'edit') and contains(@href,'%s')]", contact.id())));
     }
 
     public boolean isContactPresent() {
@@ -82,7 +81,17 @@ public class ContactHelper extends HelperBase {
         selectAllContact();
         removeSelectedContact();
     }
+    public void modifyContact(ContactData contact, ContactData modifiedContact) {
+        openHomePage();
+        selectContact(contact);
+        fillContactForm(modifiedContact);
+        submitContactModification();
+        openHomePage();
+    }
 
+    private void submitContactModification() {
+        click(By.name("update"));
+    }
     private void selectAllContact() {
         var checkboxes = manager.driver.findElements(By.name("selected[]"));
         for (var checkbox : checkboxes) {
