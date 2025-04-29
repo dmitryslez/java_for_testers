@@ -13,16 +13,16 @@ public class ContactCreationTests extends TestBase {
 
     public static List<ContactData> contactProvider() {
         var result = new ArrayList<ContactData>();
-        for (var first_name : List.of("","first name")) {
-            for (var last_name : List.of("", "last name")) {
-                for (var fax : List.of("", "fax")) {
-                    result.add(new ContactData());
+        for (var first_name : List.of("","user")) {
+            for (var last_name : List.of("", "user")) {
+                for (var fax : List.of("", "123")) {
+                    result.add(new ContactData("", first_name, last_name,"src/test/resources/images/avatar.png", fax));
 
                 }
             }
         }
         for (int i = 0; i < 5; i++) {
-            result.add(new ContactData("", randomString(i * 10), randomString(i * 10), randomString(i * 10)));
+            result.add(new ContactData("", randomString(i * 10), randomString(i * 10),randomFile("src/test/resources/images"), randomString(i * 10)));
         }
         return result;
     }
@@ -38,7 +38,7 @@ public class ContactCreationTests extends TestBase {
         };
         newContacts.sort(compareById);
         var expectedList = new ArrayList<>(oldContacts);
-        expectedList.add(contact.withId(newContacts.get(newContacts.size() - 1).id()).withFax(""));
+        expectedList.add(contact.withId(newContacts.get(newContacts.size() - 1).id()).withPhoto("").withFax(""));
         expectedList.sort(compareById);
         Assertions.assertEquals(newContacts, expectedList);
 
@@ -46,7 +46,7 @@ public class ContactCreationTests extends TestBase {
 
 
     public static List<ContactData> negativeContactProvider() {
-        var result = new ArrayList<ContactData>((List.of(new ContactData("", "user'","",""))));
+        var result = new ArrayList<ContactData>((List.of(new ContactData("", "user'","","src/test/resources/images/avatar.png",""))));
 
         return result;
     }

@@ -31,6 +31,7 @@ public class ContactHelper extends HelperBase {
     private void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.first_name());
         type(By.name("lastname"), contact.last_name());
+        attach(By.name("photo"),contact.photo());
         type(By.name("fax"), contact.fax());
 
     }
