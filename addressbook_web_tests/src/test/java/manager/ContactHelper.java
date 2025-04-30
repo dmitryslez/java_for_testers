@@ -48,7 +48,7 @@ public class ContactHelper extends HelperBase {
 
 
     private void selectContact(ContactData contact) {
-        click(By.xpath(String.format("//a[contains(@href,'edit') and contains(@href,'%s')]", contact.id())));
+        click(By.xpath(String.format("//a[contains(@href,'edit') and @href='%s']", contact.id())));
     }
 
     public boolean isContactPresent() {
